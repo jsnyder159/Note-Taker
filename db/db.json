@@ -2,15 +2,5 @@
     {
         "title": "Test Title",
         "text": "Test text"
-    },
-    {
-        "title": "one",
-        "text": "two",
-        "note_id": "52fec78b-ec12-4e24-8079-3a8556aefd09"
-    },
-    {
-        "title": "two",
-        "text": "three",
-        "note_id": "a3e63928-c24a-4717-9090-27ce06a2ad24"
     }
 ]

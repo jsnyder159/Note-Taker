@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
-const { readAndAppend, readFromFile } = require('../helpers/fsutils');
+const { readAndAppend, readFromFile, writeToFile, } = require('../helpers/fsutils');
 
 router.get('/notes', (req, res) =>
     readFromFile('./db/db.json').then((data) => {
@@ -15,7 +15,7 @@ router.post('/notes', (req, res) => {
         const newNotes = {
             title,
             text,
-            note_id: uuidv4(),
+            id: uuidv4(),
         };
 
     readAndAppend(newNotes, './db/db.json');
@@ -29,6 +29,20 @@ router.post('/notes', (req, res) => {
     } else {
         res.json('Error posting note');
     }
+});
+
+router.delete('/notes/:id', (req, res) => {
+    readFromFile('./db/db.json').then((data) => {
+        var list = JSON.parse(data);
+        var newArray = []
+        for (i=0; i<list.length; i++){
+            if ( req.params.id !== list[i].id ){
+                newArray.push(list[i])
+            } 
+        }
+        writeToFile('./db/db.json', newArray)
+        res.json({message: 'Successfully Added'})
+    });
 });
 
 module.exports = router;

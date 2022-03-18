@@ -14,11 +14,6 @@ app.use('/api', api);
 
 app.use(express.static('public'));
 
-// Anything else sends to Homepage
-app.get('*', (req, res) =>
-    res.sendFile(path.join(__dirname, '/public/index.html'))
-);
-
 app.listen(PORT, () =>
     console.log(`App Listening at http://localhost:${PORT}`)
 );
