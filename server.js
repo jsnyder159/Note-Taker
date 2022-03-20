@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const api = require('./routes/notes.js');
 const express = require('express');
-const PORT = process.env.port || 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 const html = require('./routes/index.js')
 

@@ -17,7 +17,7 @@
   
   ## Installation
   
-  NODE.js, express, path, fs
+  NODE.js
 
   npm install
   
