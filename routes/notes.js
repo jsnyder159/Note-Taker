@@ -34,12 +34,12 @@ router.post('/notes', (req, res) => {
 router.delete('/notes/:id', (req, res) => {
     readFromFile('./db/db.json').then((data) => {
         var list = JSON.parse(data);
-        var newArray = []
+        var newArray = [];
         for (i=0; i<list.length; i++){
             if ( req.params.id !== list[i].id ){
                 newArray.push(list[i])
-            } 
-        }
+            }; 
+        };
         writeToFile('./db/db.json', newArray)
         res.json({message: 'Successfully Added'})
     });
