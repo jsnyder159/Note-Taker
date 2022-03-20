@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
-const { readAndAppend, readFromFile, writeToFile, } = require('../helpers/fsutils');
+const { readAndAppend, readFromFile, writeToFile, } = require('./helpers/fsutils');
 
 router.get('/notes', (req, res) =>
     readFromFile('./db/db.json').then((data) => {
