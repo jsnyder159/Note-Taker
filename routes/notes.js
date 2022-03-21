@@ -2,12 +2,15 @@ const router = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
 const { readAndAppend, readFromFile, writeToFile, } = require('../helpers/fsUtils');
 
+
+// Shows saved note
 router.get('/notes', (req, res) =>
     readFromFile('./db/db.json').then((data) => {
         res.json(JSON.parse(data))})
 
 );
 
+// Adds new note to saved not section and adds an unique ID to them.
 router.post('/notes', (req, res) => {
     const { title, text } = req.body;
     
@@ -31,6 +34,8 @@ router.post('/notes', (req, res) => {
     }
 });
 
+// Delete Function for the garbage can button.  Cycles through list of notes, adds all notes not matching the searched ID, 
+//adds them to a new array, and then writes the new array in saved notes section.
 router.delete('/notes/:id', (req, res) => {
     readFromFile('./db/db.json').then((data) => {
         var list = JSON.parse(data);
